@@ -1,0 +1,44 @@
+.nextdaysforecast {
+    justify-content: space-evenly;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.nextdaysforecastitem {
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 25px;
+    display: flex;
+}
+
+.day {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.degreeRangeDisplay {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+.degreeRange {
+    border-radius: 3px;
+    background-color: #4889ac;
+    min-width: 200px;
+    min-height: 5px;
+}
+
+.degreesMin {
+    color: #88d0f9;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.degreesMax {
+    font-size: 14px;
+    font-weight: 500;
+}
