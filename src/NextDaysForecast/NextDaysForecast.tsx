@@ -12,22 +12,22 @@ export const NextDaysForecast: React.FC = () => {
                 day={Day.SUNDAY}
                 icon={RainyIcon}
                 degreesMin={degreesMin} degreesMax={degreesMax}
-                likelyDegreesMin={12} likelyDegreesMax={23}/>
+                likelyDegreesMin={12} likelyDegreesMax={22}/>
             <NextDaysForecastItem
                 day={Day.MONDAY}
                 icon={RainyIcon}
                 degreesMin={degreesMin} degreesMax={degreesMax}
-                likelyDegreesMin={12} likelyDegreesMax={23}/>
+                likelyDegreesMin={12} likelyDegreesMax={22}/>
             <NextDaysForecastItem
                 day={Day.TUESDAY}
                 icon={RainyIcon}
                 degreesMin={degreesMin} degreesMax={degreesMax}
-                likelyDegreesMin={12} likelyDegreesMax={23}/>
+                likelyDegreesMin={15} likelyDegreesMax={21}/>
             <NextDaysForecastItem
                 day={Day.WEDNESDAY}
                 icon={RainyIcon}
                 degreesMin={degreesMin} degreesMax={degreesMax}
-                likelyDegreesMin={12} likelyDegreesMax={23}/>
+                likelyDegreesMin={13} likelyDegreesMax={23}/>
             <NextDaysForecastItem
                 day={Day.THURSDAY}
                 icon={RainyIcon}
@@ -63,7 +63,12 @@ const NextDaysForecastItem: React.FC<NextDaysForecastItemProps> = ({
                                                                        icon,
                                                                        likelyDegreesMax,
                                                                        likelyDegreesMin
+
                                                                    }) => {
+    const degreeDifference = degreesMax - degreesMin;
+    const likelyDegreeDifference = likelyDegreesMax - likelyDegreesMin;
+    const distanceFromStart = ((likelyDegreesMin - degreesMin) / degreeDifference) * 100.0;
+    const gradientLength = (likelyDegreeDifference / degreeDifference) * 100.0;
     return (
         <div className="nextdaysforecastitem">
             <div className="day">
@@ -72,13 +77,16 @@ const NextDaysForecastItem: React.FC<NextDaysForecastItemProps> = ({
             <img height="25" src={icon} alt=""/>
             <div className="degreeRangeDisplay">
                 <div className="degreesMin">
-                    {degreesMin}°
+                    {likelyDegreesMin}°
                 </div>
                 <div className="degreeRange">
-
+                    <div
+                        className="degreeRangeGradient"
+                        style={{width: `${gradientLength}%`,marginLeft: `${distanceFromStart}%`}}
+                    />
                 </div>
                 <div className="degreesMax">
-                    {degreesMax}°
+                    {likelyDegreesMax}°
                 </div>
             </div>
         </div>

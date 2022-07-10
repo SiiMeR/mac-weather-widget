@@ -21,8 +21,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
-    justify-content: space-evenly;
+    gap: 9px;
+    justify-content: center;
 }
 
 .degreeRange {
@@ -30,6 +30,12 @@
     background-color: #4889ac;
     min-width: 200px;
     min-height: 5px;
+}
+
+.degreeRangeGradient {
+    background-image: linear-gradient(90deg, #8dd29b, #fccc03);
+    min-height: inherit;
+    border-radius: 3px;
 }
 
 .degreesMin {
