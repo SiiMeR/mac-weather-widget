@@ -69,6 +69,9 @@ const NextDaysForecastItem: React.FC<NextDaysForecastItemProps> = ({
     const likelyDegreeDifference = likelyDegreesMax - likelyDegreesMin;
     const distanceFromStart = ((likelyDegreesMin - degreesMin) / degreeDifference) * 100.0;
     const gradientLength = (likelyDegreeDifference / degreeDifference) * 100.0;
+
+    const distanceFromStartPercent = `${Math.floor(distanceFromStart)}%`;
+
     return (
         <div className="nextdaysforecastitem">
             <div className="day">
@@ -79,15 +82,23 @@ const NextDaysForecastItem: React.FC<NextDaysForecastItemProps> = ({
                 <div className="degreesMin">
                     {likelyDegreesMin}°
                 </div>
-                <div className="degreeRange">
+
+                <div className="degreeRangeGradientBackground">
                     <div
                         className="degreeRangeGradient"
-                        style={{width: `${gradientLength}%`,marginLeft: `${distanceFromStart}%`}}
+                        style={{width: `${gradientLength}%`}}
                     />
                 </div>
                 <div className="degreesMax">
                     {likelyDegreesMax}°
                 </div>
+                <svg viewBox="0 0 200 5" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="degreeRangeGradientOverlayClipPath">
+                            <rect color="#000000" x={distanceFromStartPercent} width="50%" height="100%" rx="3" ry="3"/>
+                        </clipPath>
+                    </defs>
+                </svg>
             </div>
         </div>
     )
